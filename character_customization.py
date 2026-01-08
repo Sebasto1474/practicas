@@ -1,5 +1,3 @@
-def customization(genre, race, class_info):
-    genre_options = ["Male", "Female"]
-    race_options = ["Human", "Orc", "Elf", "Dark elf", "Dwarf", "Gnome"]
-    class_options = ["Warrior", "Paladin", "Mage", "Druid", "Priest", "Rogue"]
-    
+number = 63.52
+round_number = int((number/ 10))*10
+print(round_number)
