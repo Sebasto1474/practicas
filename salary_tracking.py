@@ -25,14 +25,43 @@ class Employee:
     @property
     def name(self):
         return self._name
+
+    @name.setter
+    def name(self,new_name):
+        if not isinstance(new_name, str):
+            raise TypeError("'name' must be a string.")
+        self._name = new_name
+        print(f"'name' updated to '{self._name}'.")
+
     @property
     def level(self):
         return self._level
-    isinstance()
 
-sebasto_king = Employee("Sebasto", "Petardo")
+    @level.setter
+    def level(self, new_level):
+        if new_level not in Employee._base_salaries.keys():
+            raise ValueError(f"Invalid value '{new_level}' for 'level' attribute.")
+        if new_level == self._level:
+            raise ValueError(f"'{self._level}' is already the selected level.")
+        if Employee._base_salaries[new_level] < Employee._base_salaries[self.level]:
+            raise ValueError("Cannot change to lower level.")
+        print(f"'{self.name}' promoted to '{new_level}'.")
+        self.salary = Employee._base_salaries[new_level]
+        self._level = new_level
+
+    @property
+    def salary(self):
+        return self._salary
+    @salary.setter
+    def salary(self, new_salary):
+        if not isinstance(new_salary, int) and not isinstance(new_salary, float):
+            raise TypeError("'salary' must be a number.")
+        if new_salary < self._salary:
+            raise ValueError(f"Salary must be higher than minimum salary ${self._salary}.")
+        self._salary = new_salary
+        print(f"Salary updated to ${self._salary}.")
+
+sebasto_king = Employee("Sebasto", "junior")
 print(sebasto_king)
-print(sebasto_king.name)
-print(sebasto_king.level)
-print(sebasto_king.__repr__())
-print(repr(sebasto_king))
+print(f"Base salary: {sebasto_king.salary}")
+sebasto_king.level = "mid-level"
