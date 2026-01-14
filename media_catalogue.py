@@ -53,7 +53,7 @@ class MediaCatalogue:
             for index, movie in enumerate(movies, 1):
                 result += f"{index}. {movie}\n"
         if series:
-            result += "=== SERIES ===\n"
+            result += "=== TV SERIES ===\n"
             for index, serie in enumerate(series,1):
                 result += f"{index}. {serie}\n"
         return result
